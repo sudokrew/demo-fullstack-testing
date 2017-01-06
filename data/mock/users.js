@@ -1,4 +1,4 @@
-const now = Date.now();
+const now = new Date();
 
 const users = [
   {
