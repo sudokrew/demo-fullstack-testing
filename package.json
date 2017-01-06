@@ -1,0 +1,26 @@
+{
+  "name": "boilerplate-fullstack",
+  "version": "0.0.0",
+  "description": "Fullstack example application",
+  "main": "server/server.js",
+  "dependencies": {
+    "sequelize": "3.28.0",
+    "sqlite3": "3.1.8"
+  },
+  "devDependencies": {
+    "rimraf": "2.5.4",
+    "sequelize-cli": "2.5.1"
+  },
+  "scripts": {
+    "db:provision": "rimraf data/${NODE_ENV}.sqlite && sequelize db:migrate",
+    "db:seed": "sequelize db:seed:all --seeders-path seeders/seed",
+    "db:seed:mock": "sequelize db:seed:all --seeders-path seeders/test",
+    "db:seed:all": "npm run db:seed && npm run db:seed:mock",
+    "db:provision:development": "NODE_ENV=development npm run db:provision",
+    "db:seed:development": "NODE_ENV=development npm run db:seed:all",
+    "db:provision:test": "NODE_ENV=test npm run db:provision",
+    "db:seed:test": "NODE_ENV=test npm run db:seed:all"
+  },
+  "author": "Tony Gaskell <tony@sudokrew.com>",
+  "license": "ISC"
+}
