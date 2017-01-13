@@ -12,14 +12,12 @@
     "sequelize-cli": "2.5.1"
   },
   "scripts": {
-    "db:provision": "rimraf data/${NODE_ENV}.sqlite && sequelize db:migrate",
-    "db:seed": "sequelize db:seed:all --seeders-path seeders/seed",
-    "db:seed:mock": "sequelize db:seed:all --seeders-path seeders/test",
-    "db:seed:all": "npm run db:seed && npm run db:seed:mock",
-    "db:provision:development": "NODE_ENV=development npm run db:provision",
-    "db:seed:development": "NODE_ENV=development npm run db:seed:all",
-    "db:provision:test": "NODE_ENV=test npm run db:provision",
-    "db:seed:test": "NODE_ENV=test npm run db:seed:all"
+    "db:provision": "rimraf data/${NODE_ENV}.sqlite && sequelize db:migrate --config server/config/config.js --migrations-path server/migrations",
+    "db:seed": "sequelize db:seed:all --seeders-path server/seeders/seed --config server/config/config.js",
+    "db:seed:mock": "sequelize db:seed:all --seeders-path server/seeders/test --config server/config/config.js",
+    "db:seed:all": "npm-run-all db:seed db:seed:mock",
+    "db:seed:development": "NODE_ENV=development npm-run-all db:provision db:seed:all",
+    "db:seed:test": "NODE_ENV=test npm-run-all db:provision db:seed:all",
   },
   "author": "Tony Gaskell <tony@sudokrew.com>",
   "license": "ISC"
