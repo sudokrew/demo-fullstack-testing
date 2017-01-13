@@ -7,7 +7,8 @@ Feature: Admin Login
   Scenario Outline: Invalid logins should not let the user log in
     When I enter into the "username" input "<username>"
      And I enter into the "password" input "<password>"
-    Then I should not be on the "dashboard" page
+     And I click the "Login" button
+    Then I should be on the "login" page
 
     Examples:
       | username | password |
@@ -17,8 +18,9 @@ Feature: Admin Login
       | editor   | badpass  |
       | baduser  | password |
 
-  @happy
+  @happy 
   Scenario: Admin user successfuly logs in
     When I enter into the "username" input "editor"
      And I enter into the "password" input "password"
-    Then I should be on the "dashboard" page
+     And I click the "Login" button
+    Then I should be on the "manage" page

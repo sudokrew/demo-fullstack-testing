@@ -8,9 +8,14 @@ Feature: Buy Ads
   Scenario: A user tries to create an empty ad
     When I click the "Buy" button
     Then A "Ad must be at least 25 characters long" error should be visible
-
-  @happy
+  
+  @happy 
   Scenario: A user creates an ad
-    When I enter into the "ad" textarea "This is an ad\nPlease respond\nIt is most urgent"
+    When I enter into the "description" textarea
+      """
+      This is an ad
+      Please respond
+      It is most urgent
+      """
     When I click the "Buy" button
     Then A "Success" modal should be visible
