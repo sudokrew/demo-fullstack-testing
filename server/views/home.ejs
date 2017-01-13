@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Home page</title>
+  </head>
+  <body>
+    <nav>
+      <a href="/buy-ads">Buy Ads</a>
+    </nav>
+    <ul
+      class="ads"
+    >
+    <% for( var i = 0; i < ads.length; i++) { %>
+      <li class="ad">
+        <%= ads[i].description %>
+      </li>
+    <% } %>
+    </ul>
+  </body>
+</html>

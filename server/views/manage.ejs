@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Manage page</title>
+  </head>
+  <body>
+    <nav>
+      <a href="/logout">Logout</a>
+    </nav>
+    <table
+      class="ads"
+    >
+      <thead>
+        <tr>
+          <th>
+            Description
+          </th>
+          <th>
+            Visible?
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+      <% for( var i = 0; i < ads.length; i++) { %>
+        <tr class="ad">
+          <td>
+            <textarea rows="5" cols="80" disabled><%= ads[i].description %></textarea>
+          </td>
+          <td>
+            <form
+              action="/api/ads/<%= ads[i].id %>"
+              method="POST"
+            >
+              <input type="hidden" name="_method" value="PUT">
+                <input
+                  name="isVisible"
+                  type="checkbox"
+                  value="true"
+                  <% if (ads[i].isVisible) { %>
+                  checked
+                  <% } %>
+                  onchange="this.form.submit()"
+                >
+            </form>
+          </td>
+        </tr>
+      <% } %>
+      </tbody>
+    </table>
+  </body>
+</html>

@@ -4,10 +4,18 @@
   "description": "Fullstack example application",
   "main": "server/index.js",
   "dependencies": {
+    "babel-plugin-transform-async-functions": "6.8.0",
+    "babel-plugin-transform-async-to-generator": "6.16.0",
     "babel-polyfill": "6.20.0",
     "babel-preset-es2015": "6.18.0",
     "babel-register": "6.18.0",
+    "body-parser": "1.15.2",
+    "ejs": "2.5.5",
     "express": "4.14.0",
+    "express-session": "1.14.2",
+    "method-override": "2.3.7",
+    "passport": "0.3.2",
+    "passport-local": "1.0.0",
     "sequelize": "3.28.0",
     "sqlite3": "3.1.8"
   },
