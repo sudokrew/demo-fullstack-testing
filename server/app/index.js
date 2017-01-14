@@ -17,10 +17,15 @@ import apiApp from '../api';
 import buyAdsRouter from '../routes/buy-ads';
 import loginRouter from '../routes/login';
 
+const PROJECT_ROOT_PATH = path.resolve(__dirname, '..', '..');
+const SERVER_ROOT_PATH = path.resolve(PROJECT_ROOT_PATH, 'server');
+
 const app = express();
 
-app.set('views', path.resolve(__dirname, '..', 'views'));
+app.set('views', path.resolve(SERVER_ROOT_PATH, 'views'));
 app.set('view engine', 'ejs');
+
+app.use(express.static(path.resolve(PROJECT_ROOT_PATH, 'public')));
 
 // Login strategy
 passport.use(new LocalStrategy(
