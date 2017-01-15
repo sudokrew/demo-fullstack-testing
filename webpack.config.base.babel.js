@@ -9,22 +9,42 @@ const OUTPUT_PATH = path.join(__dirname, 'public');
 const SOURCE_PATH = path.resolve(__dirname, 'src');
 
 export default {
+  devtool: 'source-map',
+  entry: {
+    'buy-ads': [
+      'babel-polyfill',
+      path.resolve(SOURCE_PATH, 'buy-ads.js')
+    ],
+  },
+  externals: {},
   module: {
     rules: [
       {
+        test: /\.css$/,
+        include: SOURCE_PATH,
+        loaders: [
+          'style-loader',
+          'css-loader',
+          'postcss-loader',
+        ],
+      },
+      {
         test: /\.jsx?$/,
-        loader: 'babel-loader?plugins=istanbul',
+        include: SOURCE_PATH,
         exclude: /node_modules/,
+        loader: 'babel-loader',
       },
       {
         test: /\.json$/,
+        include: SOURCE_PATH,
+        exclude: /node_modules/,
         loader: 'json-loader',
       },
     ],
   },
   output: {
     path: OUTPUT_PATH,
-    filename: 'bundle.js',
+    filename: '[name].js',
   },
   resolve: {
     modules: [
@@ -44,8 +64,7 @@ export default {
       options: {
         postcss: webpack => [
           postcssImport({
-            addDependencyTo: webpack,
-            path: [SOURCE_PATH],
+            path: [ SOURCE_PATH ],
           }),
           cssnext({ browsers: ['last 2 versions', 'IE > 10'] }),
           postcssReporter({ clearMessages: true }),
@@ -53,5 +72,4 @@ export default {
       }
     })
   ],
-  externals: {},
 };

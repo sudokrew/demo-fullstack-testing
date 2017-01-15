@@ -1,5 +1,5 @@
 {
-  "name": "boilerplate-fullstack",
+  "name": "demo-fullstack-testing",
   "version": "0.0.0",
   "description": "Fullstack example application",
   "main": "server/index.js",
@@ -63,6 +63,7 @@
     "webpack-merge": "2.4.0"
   },
   "scripts": {
+    "prebuild": "npm run clean",
     "build": "webpack --config webpack.config.${NODE_ENV}.babel.js",
     "build:test": "NODE_ENV=test npm run build",
     "chimp": "chimp --browser=${CHIMP_BROWSER}",
@@ -73,7 +74,7 @@
     "db:seed:all": "npm-run-all db:seed db:seed:mock",
     "db:seed:development": "NODE_ENV=development npm-run-all db:provision db:seed:all",
     "db:seed:test": "NODE_ENV=test npm-run-all db:provision db:seed:all",
-    "start": "NODE_ENV=${NODE_ENV:=development} node server",
+    "start": "NODE_ENV=${NODE_ENV:=development} PORT=${PORT:=8080} node server",
     "test": "NODE_ENV=test npm-run-all test:unit:backend test:integration:backend test:acceptance",
     "pretest:acceptance": "npm run db:seed:test",
     "test:acceptance": "NODE_ENV=test PORT=${PORT:=8080} npm-run-all -p -r test:webdriver test:cover",

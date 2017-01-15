@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+
 import styles from './Modal.css';
 
 const Modal = (props) => {

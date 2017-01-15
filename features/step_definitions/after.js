@@ -24,3 +24,12 @@ export default function () {
     fs.writeFile('coverage/coverage.frontend.json', JSON.stringify(globalCoverage), 'utf8', done);
   });
 };
+
+/**
+* Get the coverage object
+* @return {[type]} [description]
+*/
+function getCoverageObjectValue() {
+  const __coverage__ = browser.execute(() => window.__coverage__);
+  return __coverage__.value;
+}
