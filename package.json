@@ -78,17 +78,17 @@
     "test": "NODE_ENV=test npm-run-all test:unit:backend test:integration:backend test:acceptance",
     "pretest:acceptance": "npm run db:seed:test",
     "test:acceptance": "NODE_ENV=test PORT=${PORT:=8080} npm-run-all -p -r test:webdriver test:cover",
-    "posttest:cover": "NODE_ENV=test istanbul report --include \"coverage/*coverage*.json\" lcov",
     "pretest:cover": "npm run build:test",
-    "test:cover": "NODE_ENV=test PORT=${PORT:=8080} istanbul cover server/index.js --handle-sigint",
+    "test:cover": "NODE_ENV=test PORT=${PORT:=8080} istanbul cover server/index.js --handle-sigint --dir coverage/backend",
+    "posttest:cover": "npm run test:cover:report:frontend",
+    "test:cover:report:frontend": "istanbul report --include coverage/frontend/coverage.json --dir coverage/frontend",
     "pretest:integration:backend": "npm run db:seed:test",
     "test:integration:backend": "npm run test:mocha -- \"test/backend/**/*spec*\"",
     "test:mocha": "NODE_ENV=test mocha --require babel-polyfill --compilers js:babel-register",
     "test:unit:backend": "npm run test:mocha -- \"server/**/*spec*\"",
     "test:unit:frontend": "karma start karma.conf.js",
     "test:webdriver": "ROOT_URL=http://localhost:${PORT} npm-run-all wait-on:server chimp",
-    "wait-on:server": "wait-on ${ROOT_URL}",
-    "blah-coverage-report": "istanbul report --root coverage lcov"
+    "wait-on:server": "wait-on ${ROOT_URL}"
   },
   "author": "Tony Gaskell <tony@sudokrew.com>",
   "license": "ISC"

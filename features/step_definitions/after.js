@@ -1,4 +1,5 @@
 import fs from 'fs';
+import path from 'path';
 
 import {
   createCoverageMap,
@@ -11,7 +12,7 @@ const summary = createCoverageSummary();
 export default function () {
   this.AfterStep((event, done) => {
     const value = getCoverageObjectValue();
-    globalCoverage.merge(createCoverageMap(value));
+    globalCoverage.merge(value);
     done();
   });
 
@@ -21,7 +22,11 @@ export default function () {
       const s = fc.toSummary();
       summary.merge(s);
     });
-    fs.writeFile('coverage/coverage.frontend.json', JSON.stringify(globalCoverage), 'utf8', done);
+    const COVERAGE_DIR = path.resolve('coverage', 'frontend');
+    if(fs.existsSync(COVERAGE_DIR) === false) {
+    fs.mkdirSync(COVERAGE_DIR);
+  }
+    fs.writeFile(path.resolve(COVERAGE_DIR, 'coverage.json'), JSON.stringify(globalCoverage), 'utf8', done);
   });
 };
 

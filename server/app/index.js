@@ -44,6 +44,10 @@ passport.use(new LocalStrategy(
   }
 ));
 
+if (false) {
+  console.log('hey');
+}
+
 passport.serializeUser(function(user, done) {
   done(null, user.id);
 });
