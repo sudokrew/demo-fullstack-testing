@@ -38,9 +38,9 @@ client wants/needs uncovered during the `Discovery` phase.
 
 - The admin user should be able to log out.
 
-## Running Tests
+# Running Tests
 
-### Acceptance Tests
+## Acceptance Tests
 
 Acceptance (end user) tests are responsible for testing the business requirements from the end
 user's perspective. These are mainly covered via automated tests using a webdriver (e.g. Selenium),
@@ -55,7 +55,7 @@ In order to run acceptance tests for for both frontend and backend projects run:
 npm run test:acceptance
 ```
 
-#### Coverage reports
+### Coverage reports
 
 The acceptance tests will generate coverage reports for both the frontend and backend code located respectively at:
 
@@ -63,7 +63,7 @@ The acceptance tests will generate coverage reports for both the frontend and ba
 - `coverage/backend/lib-cov/index.html`
 
 
-### Integration Tests
+## Integration Tests
 
 Integration (end to end) tests check that method calls between systems are working correctly.
 For frontend code, this usually tests requests made to the server, and backend code tests database
@@ -77,7 +77,7 @@ In order to run integration tests, run:
 npm run test:integration
 ```
 
-### Unit Tests
+## Unit Tests
 
 Unit tests will check that individual functions are working correctly, these files are usually next
 to the files they test in the `src` and `server` folders. You these are files that end in
