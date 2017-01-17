@@ -1,9 +1,9 @@
 import { expect } from 'chai';
 import request from 'supertest';
 
-import app from '../../server/app';
+import app from '../../../server/app';
 
-import ads from '../../data/mock/ads';
+import ads from '../../../data/mock/ads';
 
 describe('ads resource endpoint', function () {
   const ADS_RESOURCE_ENDPOINT = '/api/ads';

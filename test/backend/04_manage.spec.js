@@ -3,9 +3,9 @@ import request from 'supertest';
 
 import cheerio from 'cheerio';
 
-import app from '../server/app';
+import app from '../../server/app';
 
-import users from '../data/mock/users';
+import users from '../../data/mock/users';
 
 describe('manage page', function () {
   const MANAGE_ENDPOINT = '/manage';

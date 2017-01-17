@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 import request from 'supertest';
 
-import app from '../../server/app';
+import app from '../../../server/app';
 
 describe('api endpoint', function () {
   const API_ENDPOINT = '/api';

@@ -3,7 +3,7 @@ import request from 'supertest';
 
 import cheerio from 'cheerio';
 
-import app from '../server/app';
+import app from '../../server/app';
 
 describe('buy ads page', function () {
   const BUY_ADS_ENDPOINT = '/buy-ads';
