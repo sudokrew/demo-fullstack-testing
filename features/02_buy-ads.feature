@@ -7,7 +7,7 @@ Feature: Buy Ads
 
   Scenario: A user tries to create an empty ad
     When I click the "Buy" button
-    Then A "Ad must be at least 25 characters long" error should be visible
+    Then A "`description` must be at least 25 characters" error should be visible
   
   @happy 
   Scenario: A user creates an ad

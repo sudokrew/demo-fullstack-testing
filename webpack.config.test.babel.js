@@ -6,6 +6,11 @@ import BASE_CONFIG from './webpack.config.base.babel';
 const SOURCE_PATH = path.resolve(__dirname, 'src');
 
 export default merge.smart(BASE_CONFIG, {
+  externals: {
+    'react/addons': true,
+    'react/lib/ExecutionEnvironment': true,
+    'react/lib/ReactContext': true,
+  },
   module: {
     rules: [
       {
@@ -21,5 +26,10 @@ export default merge.smart(BASE_CONFIG, {
         loader: 'babel-loader?plugins=istanbul',
       },
     ]
-  }
+  },
+  plugins: [
+    new webpack.IgnorePlugin(/ReactContext/, /enzyme/),
+    new webpack.IgnorePlugin(/ExecutionEnvironment/, /enzyme/),
+    new webpack.NoEmitOnErrorsPlugin(),
+  ]
 });

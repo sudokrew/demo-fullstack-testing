@@ -5,22 +5,25 @@
     <title>Home page</title>
   </head>
   <body>
+
+    <div id="buy-ad-form">
+      <form
+        method="POST"
+        action="/api/ads"
+      >
+        <textarea
+          name="description"
+          rows="8"
+          cols="80"
+        ></textarea>
+        <button
+          type="submit"
+        >
+          Buy
+        </button>
+      </form>
+    </div>
     <div id="modal"></div>
-    <form
-      method="POST"
-      action="/api/ads"
-    >
-    <textarea
-      name="description"
-      rows="8"
-      cols="80"
-    ></textarea>
-    <button
-      type="submit"
-    >
-      Buy
-    </button>
-    </form>
     <script type="text/javascript" src="/buy-ads.js"></script>
   </body>
 </html>

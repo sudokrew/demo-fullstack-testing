@@ -22,10 +22,12 @@ export default function () {
       const s = fc.toSummary();
       summary.merge(s);
     });
+
     const COVERAGE_DIR = path.resolve('coverage', 'frontend');
-    if(fs.existsSync(COVERAGE_DIR) === false) {
-    fs.mkdirSync(COVERAGE_DIR);
-  }
+    if (!fs.existsSync(COVERAGE_DIR)) {
+      fs.mkdirSync(COVERAGE_DIR);
+    }
+
     fs.writeFile(path.resolve(COVERAGE_DIR, 'coverage.json'), JSON.stringify(globalCoverage), 'utf8', done);
   });
 };
