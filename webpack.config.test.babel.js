@@ -17,7 +17,7 @@ export default merge.smart(BASE_CONFIG, {
         test: /\.css$/,
         loaders: [
           //'style-loader',    // inherited from base config, via merge.smart
-          'css-loader?modules&sourceMap&context="/"',
+          'css-loader?modules&sourceMap&context="/"&localIdentName=[name]__[local]___[hash:base64:5]',
           //'postcss-loader',  // inherited from base config, via merge.smart
         ],
       },

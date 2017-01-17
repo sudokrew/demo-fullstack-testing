@@ -12,7 +12,7 @@ import BuyAdForm from './BuyAdForm';
 
 const CREATE_AD_ENDPOINT = '/api/ads';
 
-describe.only('BuyAdForm', function () {
+describe('BuyAdForm', function () {
   let buyAdForm;
 
   before(function () {
@@ -100,5 +100,4 @@ describe.only('BuyAdForm', function () {
       });
     });
   });
-
 });

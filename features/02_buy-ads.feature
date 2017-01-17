@@ -11,6 +11,7 @@ Feature: Buy Ads
   
   @happy 
   Scenario: A user creates an ad
+    Then A "Success" modal should not be visible
     When I enter into the "description" textarea
       """
       This is an ad

@@ -22,12 +22,12 @@ export default function () {
     shouldBeHidden(false, `.error=${errorMessage}`);
   });
 
-  this.Then(/^A "([^"]*)" modal should be visible$/, function (header) {
-    shouldBeHidden(false, `.modal=${header}`);
+  this.Then(/^A "([^"]*)" modal should( not)? be visible$/, function (header, isHidden) {
+    shouldBeHidden(isHidden, `[class~=modal]`);
   });
 
-  this.Then(/^The "([^"]*)" ad should( not)? be visibile$/, function (shouldNot, text) {
-    shouldBeHidden(shouldNot, `.ad=${text}`);
+  this.Then(/^The "([^"]*)" ad should( not)? be visibile$/, function (isHidden, text) {
+    shouldBeHidden(isHidden, `.ad=${text}`);
   });
 
   this.Then(/^I should( not)? be on the "([^"]*)" page$/, function (shouldNot, pageName) {
