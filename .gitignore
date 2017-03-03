@@ -1,3 +1,5 @@
+*.sqlite
+
 # Public output
 public
 
