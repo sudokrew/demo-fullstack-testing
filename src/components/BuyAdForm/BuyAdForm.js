@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import { findDomNode } from 'react-dom';
 import $ from 'jquery';
 
 import styles from './BuyAdForm.css';
@@ -7,6 +8,7 @@ class BuyAdForm extends React.Component {
   constructor (props) {
     super(props);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.onSuccess = this.props.onSuccess.bind(this);
     const { min, max } = props;
     this.validateDescriptionLength = this.validateDescriptionLength({ min, max }).bind(this);
     this.state = {
@@ -35,6 +37,9 @@ class BuyAdForm extends React.Component {
       method: 'POST',
       data,
       dataType : 'json',
+    })
+    .then((createdAd) => {
+      this.onSuccess(createdAd);
     })
     .catch((res) => {
       return this.setState({ errors: [].concat(res.responseJSON) });

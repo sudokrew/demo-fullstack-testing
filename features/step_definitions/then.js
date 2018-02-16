@@ -23,7 +23,7 @@ export default function () {
   });
 
   this.Then(/^A "([^"]*)" modal should( not)? be visible$/, function (header, isHidden) {
-    shouldBeHidden(isHidden, `[class~=modal]`);
+    shouldBeHidden(isHidden, `[class*=modal]`);
   });
 
   this.Then(/^The "([^"]*)" ad should( not)? be visibile$/, function (isHidden, text) {

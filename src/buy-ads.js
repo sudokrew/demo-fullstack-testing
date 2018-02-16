@@ -5,7 +5,7 @@ import {
   Modal,
 } from './components';
 
-ReactDOM.render(
+const modal = ReactDOM.render(
   <Modal />,
   document.getElementById('modal')
 );
@@ -14,6 +14,9 @@ ReactDOM.render(
   <BuyAdForm
     min={25}
     max={140}
+    onSuccess={() => {
+      modal.setState({ show: true });
+    }}
   />,
   document.querySelector('#buy-ad-form')
 );
